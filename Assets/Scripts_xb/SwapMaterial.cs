@@ -12,7 +12,7 @@ public class SwapMaterial : MonoBehaviour
     [SerializeField] private Material targetMaterial;
     [SerializeField] private bool isLerping;
 
-    float duration = 2.0f;
+    //float duration = 2.0f;
     Renderer rend;
 
     void Start()
