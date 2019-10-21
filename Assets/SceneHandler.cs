@@ -13,47 +13,62 @@ namespace Valve.VR.InteractionSystem.Sample
     {
         
         public Hand hand;
+        public Transform right_hand;
+        private Vector3 direction;
+        public float ballSpeed;
         private SteamVR_LaserPointer laserPointer;
-        private bool enablePointer;
+        private bool ballInHand;
 
         void Awake()
         {
             hand = this.GetComponent<Hand>();
             laserPointer = GetComponent<SteamVR_LaserPointer>();
-            enablePointer = false;
-            laserPointer.PointerIn += PointerInside;
-            laserPointer.PointerOut += PointerOutside;
-            laserPointer.PointerClick += PointerClick;
+            ballInHand = false;
+            Debug.Log("Awake!!");
+            //Debug.Log(right_hand.forward);
+            //laserPointer.PointerIn += PointerInside;
+            //laserPointer.PointerOut += PointerOutside;
+            //laserPointer.PointerClick += PointerClick;
             //laserPointer.active = false;
-            laserPointer.enabled = false;
+            //laserPointer.enabled = false;
         }
 
         private void Update()
         {
-            if (enablePointer)
-            {
-                laserPointer.enabled = true;
-                if (SteamVR_Input.GetState("Teleport", hand.handType))
-                {
-                    Debug.Log("Release color ball");
-                }
-            }
-            else
-                laserPointer.enabled = false;
-            
+            //if (SteamVR_Input.GetState("Teleport", hand.handType) && ballInHand)
+            //{
+            //    Debug.Log("Release color ball");
+            //    foreach (Transform child in this.transform)
+            //    {
+            //        if (child.CompareTag("ColorBalls") && child.GetComponent<Rigidbody>())
+            //        {
+            //            child.GetComponent<Rigidbody>().velocity = ballSpeed * child.forward;
+            //            Debug.Log("Detach from hand");
+            //            hand.DetachObject(child.gameObject);
+            //        }
+            //    }
+            //}
+            //Debug.Log(right_hand.forward);
+            if(direction != Vector3.zero)
+                direction = right_hand.forward;
+            Debug.Log(direction);
         }
 
         public void OnPickUpColorBall()
         {
             //laserPointer.enabled = true;
-            enablePointer = true;
+            ballInHand = true;
             Debug.Log("You picked up a ball");
         }
 
-        public void OnReleaseColorBall()
+        public void OnReleaseColorBall(Rigidbody rb)
         {
             Debug.Log("You releasd a ball");
-            enablePointer = false;
+            ballInHand = false;
+            rb.useGravity = false;
+            Debug.Log("Called: "+direction);
+            rb.velocity = ballSpeed * hand.transform.forward;
+            rb.AddForce(direction * 100f);
         }
 
         public void PointerClick(object sender, PointerEventArgs e)
