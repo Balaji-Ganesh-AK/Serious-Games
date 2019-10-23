@@ -3055,6 +3055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  canvas: {fileID: 1697926264}
 --- !u!82 &2069935909
 AudioSource:
   m_ObjectHideFlags: 0
