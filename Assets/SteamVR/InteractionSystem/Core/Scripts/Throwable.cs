@@ -53,7 +53,7 @@ namespace Valve.VR.InteractionSystem
         public UnityEvent onDetachFromHand;
         public HandEvent onHeldUpdate;
 
-
+        
         protected RigidbodyInterpolation hadInterpolation = RigidbodyInterpolation.None;
 
         protected new Rigidbody rigidbody;
