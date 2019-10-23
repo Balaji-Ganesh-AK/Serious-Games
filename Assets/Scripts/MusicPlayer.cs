@@ -12,6 +12,8 @@ public class MusicPlayer : MonoBehaviour
 
     public MusicMode mode;
 
+    public Canvas canvas;
+
     int currentSongIndex = -1;
     System.Random generator = new System.Random();
 
@@ -87,6 +89,11 @@ public class MusicPlayer : MonoBehaviour
     public void SetVolume(float volume)
     {
         source.volume = volume;
+    }
+
+    public void ToggleMusicMenu()
+    {
+        canvas.enabled = !canvas.enabled;
     }
 }
 
