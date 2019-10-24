@@ -11,7 +11,7 @@ public class MusicPlayer : MonoBehaviour
     AudioSource source;
 
     public const string SONG_DIRECTORY = "Songs";
-    
+
     public MusicMode mode;
 
     public Canvas canvas;
@@ -37,7 +37,7 @@ public class MusicPlayer : MonoBehaviour
             return;
         }
         PlayNextSong();
-        Dropdown modeOptions = GetComponentInChildren<Dropdown>();
+        Dropdown modeOptions = GetComponentInChildren<Dropdown>(true);
         modeOptions.options.Clear();
         foreach (var mode in Enum.GetNames(typeof(MusicMode)))
             modeOptions.options.Add(new Dropdown.OptionData(mode));
