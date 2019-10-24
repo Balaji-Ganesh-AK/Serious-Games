@@ -2,8 +2,7 @@
 
 public class ButtonListControl : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject buttonTemplate;
+    public GameObject buttonTemplate;
 
     public MusicPlayer player;
 

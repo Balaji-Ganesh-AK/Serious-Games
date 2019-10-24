@@ -41,6 +41,9 @@ public class MusicPlayer : MonoBehaviour
         modeOptions.options.Clear();
         foreach (var mode in Enum.GetNames(typeof(MusicMode)))
             modeOptions.options.Add(new Dropdown.OptionData(mode));
+
+        if (canvas && !canvas.worldCamera)
+            Debug.LogWarning("Please register a camera to the manager's UI.");
     }
 
     /// <summary>

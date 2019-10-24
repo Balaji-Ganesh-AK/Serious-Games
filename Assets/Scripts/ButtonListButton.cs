@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class ButtonListButton : MonoBehaviour
 {
-    [SerializeField]
-    private Text text;
-    [SerializeField]
-    private ButtonListControl buttonControl;
+    
+    public Text text;
+    
+    public ButtonListControl buttonControl;
 
     private string myTextString;
 
