@@ -85,6 +85,7 @@ public class MusicPlayer : MonoBehaviour
     public void ChangeSong(int index)
     {
         ChangeSong(songs[index]);
+        currentSongIndex = index;
     }
 
     public void ToggleMute()
