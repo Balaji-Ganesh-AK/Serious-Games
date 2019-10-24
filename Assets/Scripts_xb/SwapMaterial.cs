@@ -7,23 +7,27 @@ namespace Valve.VR.InteractionSystem.Sample
     public class SwapMaterial : MonoBehaviour
     {
         // Blends between two materials
-        public SceneHandler sceneHandler;
-        public List<Material> materials;
+        //public SceneHandler sceneHandler;
+        private ClickToChange colChanger;
+        //public List<Material> materials;
         public Material m_material;
-        public float lerpSpeed;
-        public float lerp;
-        public Texture m_albedo;
+        //public float lerpSpeed;
+        //public float lerp;
+        //public Texture m_albedo;
+        public float speed;
+        
         [SerializeField] private Material targetMaterial;
-        [SerializeField] private bool isLerping;
+        //[SerializeField] private bool isLerping;
 
         //float duration = 2.0f;
-        Renderer rend;
+        //Renderer rend;
 
         void Start()
         {
-            lerp = 0f;
-            isLerping = false;
-            rend = GetComponent<Renderer>();
+            colChanger = GameObject.Find("ColorChanger").GetComponent<ClickToChange>();
+            //lerp = 0f;
+            //isLerping = false;
+            //rend = GetComponent<Renderer>();
             //targetMaterial = materials[0];
             //// At start, use the first material
             //rend.material = materials[0];
@@ -56,42 +60,52 @@ namespace Valve.VR.InteractionSystem.Sample
 
         }
 
-        public void SwapNextMaterial()
-        {
-            lerp += lerpSpeed * Time.deltaTime;
-            rend.material.Lerp(rend.material, targetMaterial, lerp);
-        }
-        private void SetTargetMaterial(string m_name)
-        {
-            int i = 0;
-            foreach (Material m in materials)
-            {
-                if (m.name == m_name)
-                {
-                    Debug.Log("found " + m_name);
-                    break;
-                }
-                i++;
-            }
-            targetMaterial = materials[i];
-            lerp = 0;
-            isLerping = true;
-        }
+        //public void SwapNextMaterial()
+        //{
+        //    lerp += lerpSpeed * Time.deltaTime;
+        //    rend.material.Lerp(rend.material, targetMaterial, lerp);
+        //}
+        //private void SetTargetMaterial(string m_name)
+        //{
+        //    int i = 0;
+        //    foreach (Material m in materials)
+        //    {
+        //        if (m.name == m_name)
+        //        {
+        //            Debug.Log("found " + m_name);
+        //            break;
+        //        }
+        //        i++;
+        //    }
+        //    targetMaterial = materials[i];
+        //    lerp = 0;
+        //    isLerping = true;
+        //}
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.transform.CompareTag("Colorable"))
             {
-                Debug.Log("hit colorable");
-                collision.transform.GetComponent<Renderer>().material = m_material;
+                if (collision.transform.GetComponent<SwapChildColor>())
+                {
+                    collision.transform.GetComponent<SwapChildColor>().ChangeChildColor(m_material);
+                }
+                else
+                {
+                    //collision.transform.GetComponent<Renderer>().material.color = m_material.color;
+                    colChanger.StartChangeColor(collision.transform.GetComponent<Renderer>().material, m_material);
+                }
+                
+                
                 Destroy(this.gameObject);
             }
         }
 
         private void OnDetachedFromHand(Hand hand)
         {
-            Debug.Log(hand.transform.forward);
-            GetComponent<Rigidbody>().AddForce(hand.transform.forward * 100f);
+            //Debug.Log(hand.transform.forward);
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().velocity = (hand.transform.forward * speed);
         }
     }
 }

@@ -168,36 +168,24 @@ MonoBehaviour:
   restoreOriginalParent: 1
   onPickUp:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -825298065922546348, guid: b13af2f276721ca469157f9d9f50bd00,
-          type: 3}
-        m_MethodName: OnPickUpColorBall
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onDetachFromHand:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -825298065922546348, guid: b13af2f276721ca469157f9d9f50bd00,
+      - m_Target: {fileID: 4368402792694901316, guid: a5b459dbd9d51cd4b968fad97e8fffbe,
           type: 3}
-        m_MethodName: OnReleaseColorBall
+        m_MethodName: RespawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6770599279702762524}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+          m_ObjectArgument: {fileID: 6722278939352606418}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onHeldUpdate:
@@ -332,13 +320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c58d76bdd62efc4d88d93b3e58cec5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials: []
   m_material: {fileID: 2100000, guid: fac8268ad95d0d541b7818606d2e4e08, type: 2}
-  lerpSpeed: 0
-  lerp: 0
-  m_albedo: {fileID: 0}
+  speed: 5
   targetMaterial: {fileID: 0}
-  isLerping: 0
 --- !u!1 &6722278941107564618
 GameObject:
   m_ObjectHideFlags: 0
