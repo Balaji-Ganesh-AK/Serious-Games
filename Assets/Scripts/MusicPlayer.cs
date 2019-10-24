@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicPlayer : MonoBehaviour
@@ -9,7 +11,7 @@ public class MusicPlayer : MonoBehaviour
     AudioSource source;
 
     public const string SONG_DIRECTORY = "Songs";
-
+    
     public MusicMode mode;
 
     public Canvas canvas;
@@ -22,7 +24,7 @@ public class MusicPlayer : MonoBehaviour
     /// </summary>
     public ReadOnlyCollection<AudioClip> Songs
     {
-        get => System.Array.AsReadOnly(songs);
+        get => Array.AsReadOnly(songs);
     }
 
     // Start is called before the first frame update
@@ -35,6 +37,10 @@ public class MusicPlayer : MonoBehaviour
             return;
         }
         PlayNextSong();
+        Dropdown modeOptions = GetComponentInChildren<Dropdown>();
+        modeOptions.options.Clear();
+        foreach (var mode in Enum.GetNames(typeof(MusicMode)))
+            modeOptions.options.Add(new Dropdown.OptionData(mode));
     }
 
     /// <summary>
@@ -94,6 +100,11 @@ public class MusicPlayer : MonoBehaviour
     public void ToggleMusicMenu()
     {
         canvas.enabled = !canvas.enabled;
+    }
+
+    public void ChangeMusicMode(int value)
+    {
+        mode = (MusicMode)value;
     }
 }
 
