@@ -19,7 +19,7 @@ public class LaserSwitch : MonoBehaviour
         hand = GetComponent<Hand>();
         
         //laserComponet = transform.Find("RightHand").GetComponent<SteamVR_LaserPointer>();
-        Debug.Log(laserComponet.gameObject);
+        //Debug.Log(laserComponet.gameObject);
         //laserComponet.thickness = 0f;
         //laserComponet.enabled = false;
     }
