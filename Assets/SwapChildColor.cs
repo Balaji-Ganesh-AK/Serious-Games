@@ -37,6 +37,11 @@ public class SwapChildColor : MonoBehaviour
 
     public void ChangeChildColor(Material i_material)
     {
+        if (this.GetComponent<Renderer>())
+        {
+            colChanger.StartChangeColor(this.GetComponent<Renderer>().material, i_material);
+        }
+            //colChanger.StartChangeColor(this.GetComponent<Renderer>().material, i_material);
         foreach(var child in this.GetComponentsInChildren<Renderer>())
         {
             colChanger.StartChangeColor(child.material, i_material);
@@ -56,6 +61,37 @@ public class SwapChildColor : MonoBehaviour
         //        if (subChild.transform.GetComponent<Renderer>())
         //        {
         //            colChanger.StartChangeColor(subChild.transform.GetComponent<Renderer>().material, i_material);
+        //        }
+        //    }
+        //}
+    }
+
+    public void ChangeChildColor(Color i_color)
+    {
+        if (this.GetComponent<Renderer>())
+        {
+            colChanger.StartChangeColor(this.GetComponent<Renderer>().material, i_color);
+        }
+        //colChanger.StartChangeColor(this.GetComponent<Renderer>().material, i_material);
+        foreach (var child in this.GetComponentsInChildren<Renderer>())
+        {
+            colChanger.StartChangeColor(child.material, i_color);
+        }
+        //if (this.transform.GetComponent<Renderer>())
+        //{
+        //    colChanger.StartChangeColor(this.transform.GetComponent<Renderer>().material, i_color);
+        //}
+        //foreach (Transform child in this.transform)
+        //{
+        //    if (child.transform.GetComponent<Renderer>())
+        //    {
+        //        colChanger.StartChangeColor(child.transform.GetComponent<Renderer>().material, i_color);
+        //    }
+        //    foreach (Transform subChild in child.transform)
+        //    {
+        //        if (subChild.transform.GetComponent<Renderer>())
+        //        {
+        //            colChanger.StartChangeColor(subChild.transform.GetComponent<Renderer>().material, i_color);
         //        }
         //    }
         //}
