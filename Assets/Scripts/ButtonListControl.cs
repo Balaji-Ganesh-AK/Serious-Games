@@ -2,8 +2,7 @@
 
 public class ButtonListControl : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject buttonTemplate;
+    public GameObject buttonTemplate;
 
     public MusicPlayer player;
 
@@ -18,7 +17,7 @@ public class ButtonListControl : MonoBehaviour
             ButtonListButton blbc = button.GetComponent<ButtonListButton>();
             blbc.SetText(song.name);
             blbc.index = index++;
-            button.transform.SetParent(buttonTemplate.transform.parent, false);
+            button.transform.SetParent(buttonTemplate.transform.parent.transform.parent, false);
         }
     }
 

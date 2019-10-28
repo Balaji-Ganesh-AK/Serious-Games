@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicPlayer : MonoBehaviour
@@ -12,6 +14,8 @@ public class MusicPlayer : MonoBehaviour
 
     public MusicMode mode;
 
+    public Canvas canvas;
+
     int currentSongIndex = -1;
     System.Random generator = new System.Random();
 
@@ -20,7 +24,7 @@ public class MusicPlayer : MonoBehaviour
     /// </summary>
     public ReadOnlyCollection<AudioClip> Songs
     {
-        get => System.Array.AsReadOnly(songs);
+        get => Array.AsReadOnly(songs);
     }
 
     // Start is called before the first frame update
@@ -33,6 +37,13 @@ public class MusicPlayer : MonoBehaviour
             return;
         }
         PlayNextSong();
+        Dropdown modeOptions = GetComponentInChildren<Dropdown>(true);
+        modeOptions.options.Clear();
+        foreach (var mode in Enum.GetNames(typeof(MusicMode)))
+            modeOptions.options.Add(new Dropdown.OptionData(mode));
+
+        if (canvas && !canvas.worldCamera)
+            Debug.LogWarning("Please register a camera to the manager's UI.");
     }
 
     /// <summary>
@@ -77,6 +88,7 @@ public class MusicPlayer : MonoBehaviour
     public void ChangeSong(int index)
     {
         ChangeSong(songs[index]);
+        currentSongIndex = index;
     }
 
     public void ToggleMute()
@@ -87,6 +99,16 @@ public class MusicPlayer : MonoBehaviour
     public void SetVolume(float volume)
     {
         source.volume = volume;
+    }
+
+    public void ToggleMusicMenu()
+    {
+        canvas.enabled = !canvas.enabled;
+    }
+
+    public void ChangeMusicMode(int value)
+    {
+        mode = (MusicMode)value;
     }
 }
 
