@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27251ee0f54609846b683234d62fda61, type: 2}
+  - {fileID: 2100000, guid: 768a585f00116ff4d9ea17bb48b4aec6, type: 2}
   - {fileID: 2100000, guid: 768a585f00116ff4d9ea17bb48b4aec6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 6386782450239199955}
   - component: {fileID: 5450832956569859577}
   m_Layer: 0
-  m_Name: Tree1_Leaf_Type1
+  m_Name: Tree1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

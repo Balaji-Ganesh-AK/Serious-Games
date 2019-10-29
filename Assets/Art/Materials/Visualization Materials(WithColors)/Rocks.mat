@@ -86,7 +86,7 @@ Material:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _CurrentColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _NewColor: {r: 1, g: 1, b: 1, a: 0}
+    - _NewColor: {r: 0.9528302, g: 0.13034001, b: 0.13034001, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!114 &7144343802073052042
 MonoBehaviour:
