@@ -81,11 +81,9 @@ public class SceneHandler : MonoBehaviour
 
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        //Debug.Log(e.target.name);
-        Debug.Log(e.target.transform.GetComponent<Renderer>().materials[0]);
+        Debug.Log(e.target.name);
         if (e.target.transform.GetComponent<SwapChildColor>())
         {
-            //Debug.Log(e.target.name+", collider: "+e.target.GetComponent<BoxCollider>().name);
             e.target.transform.GetComponent<SwapChildColor>().ChangeChildColor(laserPointer.color);
             if (laserPointer.color.r == 255)
             {
@@ -102,15 +100,12 @@ public class SceneHandler : MonoBehaviour
         }
         else
         {
-
             //collision.transform.GetComponent<Renderer>().material.color = m_material.color;
-            //Debug.Log(e.target.transform.GetComponent<Renderer>().materials[0]);
             foreach(Material mat in e.target.transform.GetComponent<Renderer>().materials)
             {
                 colChanger.StartChangeColor(mat, laserPointer.color);
             }
-            //colChanger.StartChangeColor(e.target.transform.GetComponent<Renderer>().material, laserPointer.color);
-
+            
             // Debug.Log(e.target.transform.GetComponent<Renderer>().material);
             if (laserPointer.color.r == 255)
             {
