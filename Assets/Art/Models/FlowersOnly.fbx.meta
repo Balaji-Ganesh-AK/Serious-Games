@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 52f889e24f0f28a4e95b67481e3e3e03
+guid: 8e11ea33b8e85bc438b88ce83f152e34
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Solid_Black
-    second: {fileID: 2100000, guid: 6061e566de59da04ba71e5094bb4d93d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Solid_Orange
-    second: {fileID: 2100000, guid: a5e42f088ac46484d9539e8f3b909f4d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Solid_White
-    second: {fileID: 2100000, guid: 70322af90c55b0c4ca057f317dc81523, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: 510cbb0dda8546a4e94ae1322243b7c9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -95,7 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 100
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
