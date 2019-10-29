@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
 
-public class Bobbing : MonoBehaviour
+public class EnvironmentObjectMovement : MonoBehaviour
 {
-    private float originalY;
+    private Vector3 originalPosition;
 
-    //public Transform bobber;
+    public float BobbingStrength = 1f;
 
-    public float BobbingStrength = 1;
+    public float CirclingRadius = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        originalY = transform.position.y;
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = new Vector3(
-            transform.position.x,
-            originalY + (float)System.Math.Sin(Time.realtimeSinceStartup) * BobbingStrength,
-            transform.position.z
+            originalPosition.x + Mathf.Cos(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius,
+            originalPosition.y + Mathf.Sin(Time.realtimeSinceStartup) * BobbingStrength,
+            originalPosition.z + Mathf.Sin(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius
         );
     }
 }
