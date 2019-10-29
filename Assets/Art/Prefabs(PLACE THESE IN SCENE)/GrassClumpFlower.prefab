@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4530021110707851727}
   - component: {fileID: 4865814551516163065}
   - component: {fileID: 1205365901290362624}
+  - component: {fileID: 4566475804240439709}
   m_Layer: 0
   m_Name: GrassClumpFlower
   m_TagString: Untagged
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4566475804240439709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614327838666253276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.289864, y: 1.1231662, z: 4.4865723}
+  m_Center: {x: 0.03570676, y: 0.5615831, z: 0.1461283}

@@ -5,12 +5,12 @@ using UnityEngine;
 public class ClickToChange : MonoBehaviour
 {
     public int counter;
+    public float transitionSpeed = 0.01f;
     float duration = 3f;
     float transition = -0.1f;
     RaycastHit hit;
     Renderer rend;
     Material mat;
-    bool isChanging = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +32,12 @@ public class ClickToChange : MonoBehaviour
                 //{
                 //    hit.transform.gameObject.GetComponent<SwapChildColor>().ChangeChildColor(mat);
                 //}
-                foreach (Material mat in hit.transform.GetComponent<Renderer>().materials)
+                foreach(Material mat in hit.transform.GetComponent<Renderer>().materials)
                 {
                     StartCoroutine(ChangeColor(mat));
                 }
                 //mat = hit.transform.gameObject.GetComponent<Renderer>().material;
-                //StartCoroutine(ChangeColor(mat));
+                
             }
         }
     }
@@ -74,24 +74,19 @@ public class ClickToChange : MonoBehaviour
 
     IEnumerator ChangeColor(Material mat)
     {
-        Debug.Log(mat.name);
-        //if(!isChanging)
+        //float t = 0;
+        transition = -0.1f;
+        while (mat.GetFloat("_TransitionValue") < 1.1f)
         {
-            isChanging = true;
-            transition = -0.1f;
-            while (mat.GetFloat("_TransitionValue") < 1.1f)
-            {
-                //t += Time.deltaTime;
-                transition = transition + 0.03f;
-                mat.SetFloat("_TransitionValue", transition);
-                yield return null;
-            }
-            Color col = mat.GetColor("_NewColor");
-            mat.SetColor("_CurrentColor", col);
-
-            mat.SetFloat("_TransitionValue", -0.1f);
-            print("Changed");
-            isChanging = false;
+            //t += Time.deltaTime;
+            transition = transition + transitionSpeed;
+            mat.SetFloat("_TransitionValue", transition);
+            yield return null;
         }
+        Color col = mat.GetColor("_NewColor");
+        mat.SetColor("_CurrentColor", col);
+        
+        mat.SetFloat("_TransitionValue", -0.1f);
+        print("Changed");
     }
 }

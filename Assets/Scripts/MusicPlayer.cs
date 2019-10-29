@@ -83,6 +83,7 @@ public class MusicPlayer : MonoBehaviour
 
         // Make the next song play
         Invoke("PlayNextSong", nextClip.length);
+       
     }
 
     public void ChangeSong(int index)

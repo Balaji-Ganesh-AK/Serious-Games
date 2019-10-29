@@ -12,12 +12,16 @@ namespace Valve.VR.InteractionSystem
 
         public GameObject MainMenu;
         public GameObject LevelColorMenu;
+        public GameObject MusicMenu;
+       // public GameObject MusicManager;
         public SteamVR_LaserPointer laserPointer;
+        public GameObject PopMenu;
+        public GameObject MusicExitMenu;
         [SerializeField]
         public SteamVR_Action_Boolean buttonB = SteamVR_Input.GetBooleanAction("ButtonB");
-
+        public MusicPlayer MusicPlayerScript; 
         public Button[] buttons;
-
+        private bool isSecondLevel = false;
         private int[] counterArray = new int[3];
         //0 is green
         //1 is red
@@ -28,6 +32,13 @@ namespace Valve.VR.InteractionSystem
         // Start is called before the first frame update
         void Start()
         {
+            MainMenu.SetActive (false);
+            LevelColorMenu.SetActive(false);
+            MusicMenu.SetActive(false);
+            //MusicManager.SetActive(false);
+            MusicExitMenu.SetActive(false);
+            MusicPlayerScript.ToggleMusicMenu();
+
             //disable the buttons initially
             //this is for red button
             buttons[1].interactable = false;
@@ -40,14 +51,32 @@ namespace Valve.VR.InteractionSystem
         {
             
             bool isButtonBPressed = buttonB.GetState(SteamVR_Input_Sources.LeftHand);
-            if (isButtonBPressed == true)
+            if (isButtonBPressed == true && isSecondLevel == false)
             {
+           
                 MainMenu.SetActive(true);
+                MusicMenu.SetActive(true);
             }
             RewardingSystem();
 
         }
 
+        public void OpenMusicMenu()
+        {
+           // MusicManager.SetActive(true);
+            MainMenu.SetActive(false);
+            isSecondLevel = true;
+            MusicExitMenu.SetActive(true);
+            MusicPlayerScript.ToggleMusicMenu();
+        }
+        public void ExitMusicMenu()
+        {
+           // MusicManager.SetActive(false);
+            MainMenu.SetActive(true);
+            isSecondLevel = false;
+            MusicExitMenu.SetActive(false);
+            MusicPlayerScript.ToggleMusicMenu();
+        }
         private void RewardingSystem()
         {
             int n = 0;
@@ -58,6 +87,7 @@ namespace Valve.VR.InteractionSystem
                     Debug.Log("Unlock the next color!");
                     lastBallUnlocked++;
                     buttons[lastBallUnlocked].interactable = true;
+                    isSecondLevel = false;
                     
                 }
                 n++;    
@@ -67,6 +97,7 @@ namespace Valve.VR.InteractionSystem
         {
             MainMenu.SetActive(false);
             LevelColorMenu.SetActive(true);
+            isSecondLevel = true;
 
         }
         public void GreenColor()
@@ -94,15 +125,19 @@ namespace Valve.VR.InteractionSystem
         {
             MainMenu.SetActive(true);
             LevelColorMenu.SetActive(false);
+            isSecondLevel = false;
         }
         public void ExitMainMenu()
         {
+           
             MainMenu.SetActive(false);
+            isSecondLevel = false;
         }
         private void ColorSelected(float r, float g , float b)
         {
-            
-            laserPointer.color = new Color(r, g, b);
+            isSecondLevel = false;
+            laserPointer.color = new Color(r/255f, g/255f, b/255f);
+
         }
 
         public void GreenCounter()

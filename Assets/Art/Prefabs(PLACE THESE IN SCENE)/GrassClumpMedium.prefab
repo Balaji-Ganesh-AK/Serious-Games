@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5242917671682232276}
   - component: {fileID: 3862280226204808674}
   - component: {fileID: 7396346603029137691}
+  - component: {fileID: 5232247889630520963}
   m_Layer: 0
   m_Name: GrassClumpMedium
   m_TagString: Untagged
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5232247889630520963
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9122546824625405383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.06629, y: 1.1231662, z: 11.060047}
+  m_Center: {x: -0.25277925, y: 0.5615831, z: -0.36387038}
