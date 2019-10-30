@@ -12,6 +12,8 @@ public class EnvironmentObjectMovement : MonoBehaviour
 
     public float CirclingSpeed = 10f;
 
+    const float RadToDegConversion = 180f / Mathf.PI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,29 +27,21 @@ public class EnvironmentObjectMovement : MonoBehaviour
         var startPos = transform.position;
         
         transform.position = new Vector3(
-            originalPosition.x + (CirclingRadius > 0 ? Mathf.Cos(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius : originalPosition.x),
+            originalPosition.x + (CirclingRadius > 0 ? Mathf.Cos(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius * CirclingSpeed : originalPosition.x),
             originalPosition.y + Mathf.Sin(Time.realtimeSinceStartup) * BobbingStrength,
-            originalPosition.z + (CirclingRadius > 0 ? Mathf.Sin(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius : originalPosition.z)
+            originalPosition.z + (CirclingRadius > 0 ? Mathf.Sin(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius * CirclingSpeed: originalPosition.z)
         );
 
         if (CirclingRadius < .001f) return;
 
-        //var _dD = transform.position - startPos;
-        //var dD = new Vector2(_dD.x, _dD.z);
-
-        //var theta = Vector2.Angle(new Vector2(1, 0), dD);
-        //transform.rotation = new Quaternion(transform.rotation.x, theta, transform.rotation.z, transform.rotation.w);
-        //transform.Rotate(Vector3.up, theta);
-        //*
-        // It should be facing the direction it's going in... but how?
-        // Get the deltaDistance
+        // Get the change in distance
         var _dD = transform.position - startPos;
         // We only care about two dimensions here, so let's work with this
         var dD = new Vector2(_dD.x, _dD.z).magnitude;
         // Dividing the delta distance by the radius will give us our dTheta
-        // (the units work out)
-        var theta = dD / CirclingRadius * Mathf.PI;
+        // (the units work out). We also need to convert to degrees
+        var theta = dD / CirclingRadius * RadToDegConversion;
         Debug.Log($"Delta distance: {dD}; Theta: {dD}");
-        transform.Rotate(Vector3.up, -theta * CirclingSpeed);//*/
+        transform.Rotate(Vector3.up, -theta);//*/
     }
 }
