@@ -41,7 +41,6 @@ public class EnvironmentObjectMovement : MonoBehaviour
         // Dividing the delta distance by the radius will give us our dTheta
         // (the units work out). We also need to convert to degrees
         var theta = dD / CirclingRadius * RadToDegConversion;
-        Debug.Log($"Delta distance: {dD}; Theta: {dD}");
         transform.Rotate(Vector3.up, -theta);//*/
     }
 }
