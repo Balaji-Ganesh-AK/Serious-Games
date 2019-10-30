@@ -14,14 +14,12 @@ public class EnvironmentObjectMovement : MonoBehaviour
     void Start()
     {
         originalPosition = transform.position;
+        transform.Rotate(Vector3.up, Mathf.PI / 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float deltaTime = Time.deltaTime;
-
-
         var startPos = transform.position;
         
         transform.position = new Vector3(
@@ -30,14 +28,24 @@ public class EnvironmentObjectMovement : MonoBehaviour
             originalPosition.z + (CirclingRadius > 0 ? Mathf.Sin(Time.realtimeSinceStartup / CirclingRadius) * CirclingRadius : originalPosition.z)
         );
 
-        var deltaPos = transform.position - startPos;
-        deltaPos /= deltaTime;
-        var omega = deltaPos / CirclingRadius;
-        var dTheta = omega * deltaTime;
-        //float angle = Mathf.Acos(Vector3.Dot(originalPosition, transform.position)/(originalPosition.magnitude * transform.position.magnitude));
-        //float angle = Mathf.Asin(transform.position.z);
-        Vector2 perp = new Vector2(originalPosition.z, -originalPosition.x);
-        //float angle = 
-        transform.Rotate(Vector3.up, dTheta.x);
+        if (CirclingRadius < .001f) return;
+
+        //var _dD = transform.position - startPos;
+        //var dD = new Vector2(_dD.x, _dD.z);
+
+        //var theta = Vector2.Angle(new Vector2(1, 0), dD);
+        //transform.rotation = new Quaternion(transform.rotation.x, theta, transform.rotation.z, transform.rotation.w);
+        //transform.Rotate(Vector3.up, theta);
+        //*
+        // It should be facing the direction it's going in... but how?
+        // Get the deltaDistance
+        var _dD = transform.position - startPos;
+        // We only care about two dimensions here, so let's work with this
+        var dD = new Vector2(_dD.x, _dD.z).magnitude;
+        // Dividing the delta distance by the radius will give us our dTheta
+        // (the units work out)
+        var theta = dD / CirclingRadius * Mathf.PI;
+        Debug.Log($"Delta distance: {dD}; Theta: {dD}");
+        transform.Rotate(Vector3.up, theta);//*/
     }
 }
