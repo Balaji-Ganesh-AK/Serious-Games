@@ -10,6 +10,8 @@ public class EnvironmentObjectMovement : MonoBehaviour
 
     public float CirclingRadius = 1f;
 
+    public float CirclingSpeed = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,6 @@ public class EnvironmentObjectMovement : MonoBehaviour
         // (the units work out)
         var theta = dD / CirclingRadius * Mathf.PI;
         Debug.Log($"Delta distance: {dD}; Theta: {dD}");
-        transform.Rotate(Vector3.up, theta);//*/
+        transform.Rotate(Vector3.up, -theta * CirclingSpeed);//*/
     }
 }
