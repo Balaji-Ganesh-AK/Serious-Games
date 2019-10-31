@@ -42,7 +42,7 @@ namespace Valve.VR.InteractionSystem
             }
             else if (leftHandBackward || rightHandBackward)
             {
-                moveBackward(speed);
+                moveBackward(-speed);
             }
 
         }

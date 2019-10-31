@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - ColorBalls
   - Colorable
+  - Menu
   layers:
   - Default
   - TransparentFX

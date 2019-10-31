@@ -13,14 +13,19 @@ namespace Valve.VR.InteractionSystem
         public GameObject MainMenu;
         public GameObject LevelColorMenu;
         public GameObject MusicMenu;
-       // public GameObject MusicManager;
+       
         public SteamVR_LaserPointer laserPointer;
-        public GameObject PopMenu;
+        
         public GameObject MusicExitMenu;
         [SerializeField]
         public SteamVR_Action_Boolean buttonB = SteamVR_Input.GetBooleanAction("ButtonB");
-        public MusicPlayer MusicPlayerScript; 
-        public Button[] buttons;
+        
+        public Button[] Colorbuttons;
+        public Button[] AudioButtons;
+        public AudioSource BackGroundMusic;
+        public AudioSource song1;
+        public AudioSource song2;
+        public AudioSource song3;
         private bool isSecondLevel = false;
         private int[] counterArray = new int[3];
         //0 is green
@@ -36,14 +41,14 @@ namespace Valve.VR.InteractionSystem
             LevelColorMenu.SetActive(false);
             MusicMenu.SetActive(false);
             //MusicManager.SetActive(false);
-            MusicExitMenu.SetActive(false);
-            MusicPlayerScript.ToggleMusicMenu();
+            
+           
 
             //disable the buttons initially
             //this is for red button
-            buttons[1].interactable = false;
+            Colorbuttons[1].interactable = false;
             //this is for blue button
-            buttons[2].interactable = false;
+            Colorbuttons[2].interactable = false;
         }
 
         // Update is called once per frame
@@ -55,7 +60,7 @@ namespace Valve.VR.InteractionSystem
             {
            
                 MainMenu.SetActive(true);
-                MusicMenu.SetActive(true);
+                
             }
             RewardingSystem();
 
@@ -66,17 +71,10 @@ namespace Valve.VR.InteractionSystem
            // MusicManager.SetActive(true);
             MainMenu.SetActive(false);
             isSecondLevel = true;
-            MusicExitMenu.SetActive(true);
-            MusicPlayerScript.ToggleMusicMenu();
+            MusicMenu.SetActive(true);
+           
         }
-        public void ExitMusicMenu()
-        {
-           // MusicManager.SetActive(false);
-            MainMenu.SetActive(true);
-            isSecondLevel = false;
-            MusicExitMenu.SetActive(false);
-            MusicPlayerScript.ToggleMusicMenu();
-        }
+      
         private void RewardingSystem()
         {
             int n = 0;
@@ -84,9 +82,10 @@ namespace Valve.VR.InteractionSystem
             { 
                 if (counterArray[lastBallUnlocked] >= 2)
                 {
-                    Debug.Log("Unlock the next color!");
+
                     lastBallUnlocked++;
-                    buttons[lastBallUnlocked].interactable = true;
+                    Colorbuttons[lastBallUnlocked].interactable = true;
+                    Debug.Log("Current Menu Unlocked"+ Colorbuttons[lastBallUnlocked]);
                     isSecondLevel = false;
                     
                 }
@@ -133,6 +132,14 @@ namespace Valve.VR.InteractionSystem
             MainMenu.SetActive(false);
             isSecondLevel = false;
         }
+        public void ExitMusicMenu()
+        {
+            // MusicManager.SetActive(false);
+            MainMenu.SetActive(true);
+            isSecondLevel = false;
+            MusicMenu.SetActive(false);
+
+        }
         private void ColorSelected(float r, float g , float b)
         {
             isSecondLevel = false;
@@ -148,15 +155,45 @@ namespace Valve.VR.InteractionSystem
         public void redCounter()
         {
             //0 is red
-            
+            //Debug.Log("Yes");
             counterArray[1]++;
         }
         public void BlueCounter()
         {
             counterArray[2]++;
         }
-       
-
+        public void PlaySong1()
+        {
+            StopSongAndExit();
+            song2.Stop();
+            song3.Stop();
+            song1.Play();
+            song1.loop= true;
+            
+        }
+        public void PlaySong2()
+        {
+            StopSongAndExit();
+            song1.Stop();
+            song3.Stop();
+            song2.Play();
+            song2.loop = true;
+        }
+        public void PlaySong3()
+        {
+            StopSongAndExit();
+            song2.Stop();
+            song1.Stop();
+            song3.Play();
+            song3.loop = true;
+        }
+        private void StopSongAndExit()
+        {
+            BackGroundMusic.Stop();
+            MusicMenu.SetActive(false);
+            MainMenu.SetActive(false);
+            isSecondLevel = false;
+        }
 
     }
 }

@@ -81,7 +81,7 @@ public class SceneHandler : MonoBehaviour
 
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        Debug.Log(e.target.name);
+       // Debug.Log(e.target.name);
         if (e.target.transform.GetComponent<SwapChildColor>())
         {
             e.target.transform.GetComponent<SwapChildColor>().ChangeChildColor(laserPointer.color);
@@ -124,14 +124,7 @@ public class SceneHandler : MonoBehaviour
 
     public void PointerInside(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Cube")
-        {
-            Debug.Log("Cube was entered");
-        }
-        else if (e.target.name == "Button")
-        {
-            Debug.Log("Button was entered");
-        }
+        //Debug.Log("Object on focus is " +e.target.name);
     }
 
     public void PointerOutside(object sender, PointerEventArgs e)

@@ -86,7 +86,7 @@ Material:
     - Vector2_9FAA349F: {r: 1, g: 5, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _CurrentColor: {r: 0.5550893, g: 0.8962264, b: 0.37624598, a: 0}
+    - _CurrentColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NewColor: {r: 1, g: 0, b: 0.561501, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

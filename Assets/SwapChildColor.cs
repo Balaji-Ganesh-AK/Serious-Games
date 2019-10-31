@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwapChildColor : MonoBehaviour
 {
-    public Material default_material;
+    //public Material default_material;
     private ClickToChange colChanger;
 
     private void Start()
@@ -12,28 +12,23 @@ public class SwapChildColor : MonoBehaviour
         colChanger = GameObject.Find("ColorChanger").GetComponent<ClickToChange>();
     }
 
-    private void Awake()
-    {
-        InitChildColor(default_material);
-    }
-
-    private void InitChildColor(Material i_material)
-    {
-        if (this.transform.GetComponent<Renderer>())
-            this.transform.GetComponent<Renderer>().material = i_material;
-        foreach (Transform child in this.transform)
-        {
-            if (child.GetComponent<Renderer>())
-                child.GetComponent<Renderer>().material = i_material;
-            foreach (Transform subChild in child.transform)
-            {
-                if(subChild.GetComponent<Renderer>())
-                {
-                    subChild.GetComponent<Renderer>().material = i_material;
-                }
-            }
-        }
-    }
+    //private void InitChildColor(Material i_material)
+    //{
+    //    if (this.transform.GetComponent<Renderer>())
+    //        this.transform.GetComponent<Renderer>().material = i_material;
+    //    foreach (Transform child in this.transform)
+    //    {
+    //        if (child.GetComponent<Renderer>())
+    //            child.GetComponent<Renderer>().material = i_material;
+    //        foreach (Transform subChild in child.transform)
+    //        {
+    //            if(subChild.GetComponent<Renderer>())
+    //            {
+    //                subChild.GetComponent<Renderer>().material = i_material;
+    //            }
+    //        }
+    //    }
+    //}
 
     public void ChangeChildColor(Material i_material)
     {

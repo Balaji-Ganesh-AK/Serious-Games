@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Windy1
-  m_Shader: {fileID: -6465566751694194690, guid: d4cba4a2a05c78747967ab916b896459,
+  m_Shader: {fileID: -6465566751694194690, guid: 92e852f3a306abe459d455bfaf8bad29,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -33,6 +33,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_985A835F:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E24C033B:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,9 +75,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_14CDEF14: 2.22
+    - Vector1_2A756E9E: 0.5
+    - Vector1_35704158: 1
+    - Vector1_3B63C46E: 1
+    - Vector1_48EC7302: 0.5
     - Vector1_50CE006D: 0
     - Vector1_5DC64042: 1
+    - Vector1_666D5AB4: 1
+    - Vector1_8417221A: 1
+    - Vector1_DB4ED14F: 1
     - Vector1_E4F1592: 0.5
+    - Vector1_EA5F97AE: 0
     - Vector1_FBCD8C4C: 1
     - _AlphaClip: 0
     - _Blend: 0
@@ -94,6 +110,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_11538158: {r: 0.2, g: 0.25, b: 0, a: 0}
     - Vector2_ED1B5AD5: {r: 0.23, g: 0.37, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
